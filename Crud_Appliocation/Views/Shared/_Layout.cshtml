@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark text-white" style="margin-bottom: 20px; position: relative; bottom: 50px; background: rgb(5,30,71); background: linear-gradient(90deg, rgba(5,30,71,1) 0%, rgba(6,33,75,1) 9%, rgba(28,106,164,1) 100%, rgba(6,175,233,1) 100%);; box-shadow: 0 0 10px white; margin-bottom: 60px ">
+        <div class="container-fluid">
+            <a class="navbar-brand " style="font-size : 34px ; color :white ; font-weight : bold ; font-family :'Lucida Sans', 'Lucida Sans Regular' , 'Lucida Grande' , 'Lucida Sans Unicode' , Geneva, Verdana, sans-serif " href="javascript:void(0) ">Students</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar" style="margin-left : 25px">
+                <ul class="navbar-nav me-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link " style="font-size : 20px ; color :white " href="@Url.Action("Index", "Home")">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " style="font-size : 20px ; color :white " href="@Url.Action("AddProduct", "Home")">Add Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-size: 20px; color: white " href="@Url.Action("StudentList", "Home")">Student List</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    @Html.ActionLink("LogOut", "Logout", "Home", new { @class = "btn btn-danger", })
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    
+
+    
+
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

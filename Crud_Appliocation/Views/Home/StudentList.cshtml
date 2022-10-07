@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Crud_Appliocation.Models.Tbl_Student>
+
+@{
+    ViewBag.Title = "StudentList";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<style>
+
+    .searchbar {
+        margin-bottom: auto;
+        margin-top: auto;
+        height: 60px;
+        background: linear-gradient(90deg, rgba(5,30,71,1) 0%, rgba(6,33,75,1) 9%, rgba(28,106,164,1) 100%, rgba(6,175,233,1) 100%);
+        border-radius: 30px;
+        padding: 10px;
+    }
+
+    .search_input {
+        color: white;
+        border: 0;
+        outline: 0;
+        background: none;
+        width: 0;
+        caret-color: transparent;
+        line-height: 40px;
+        transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input {
+        padding: 0 10px;
+        width: 450px;
+        caret-color: white;
+        transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon {
+        background: white;
+        color: darkblue;
+    }
+
+    .search_icon {
+        height: 40px;
+        width: 40px;
+        float: right;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+@using (Html.BeginForm("StudentList", "Home", FormMethod.Get))
+{
+
+
+
+
+
+    <div class="container h-100" style="position :relative; bottom:30px">
+        <div class="d-flex  h-100">
+            <div class="searchbar">
+
+                @Html.RadioButton("SearchBy", "Name", true, new { @class = "d-none" })
+
+                @Html.TextBox("search", "", new { @class = "search_input", @placeholder = "Search...." })
+                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                <input type="submit" value="Search" class="btn btn-outline-secondary d-none" />
+
+
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+    <table class="table table-bordered " style="box-shadow: 4px 2px 5px black; position: relative; bottom: 30px ">
+        <tr style="text-align: center; color: white; background: linear-gradient(90deg, rgba(5,30,71,1) 0%, rgba(6,33,75,1) 9%, rgba(28,106,164,1) 100%, rgba(6,175,233,1) 100%);">
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.F_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attendence)
+            </th>
+            <th> Edit/Delete</th>
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr style="text-align :center ; font-weight:bold">
+        <th>
+            @Html.DisplayFor(modelItem => item.id)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOB)
+        </td>
+        <td>
+            <img src="@Url.Content(item.Image_Name)" height="50px" width="60px" style="border-radius : 50%" />
+        </td>
+
+        <td>
+            @if (item.Attendence == 0)
+            {
+                <a href="@Url.Action("Exchange", "Home", new { id = item.id })" class="btn btn-success">Present</a>
+
+            }
+            else
+            {
+                <a href="@Url.Action("Exchange", "Home", new { id = item.id })" class="btn btn-danger">Absent</a>
+            }
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Home", new {id=item.id })" class="btn btn-outline-info ">Edit</a>
+            <a href="@Url.Action("Delete", "Home", new { id=item.id })" class="btn btn-outline-danger">Delete</a>
+        </td>
+    </tr>
+        }
+
+
+
+    </table>
+
+

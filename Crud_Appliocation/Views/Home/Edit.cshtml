@@ -1,0 +1,127 @@
+﻿@model Crud_Appliocation.Models.Tbl_Student
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })    )
+{
+
+    <section class="vh-100">
+        <div class="container h-80 " style="position: relative; bottom: 70px  ">
+            <div class="row d-flex justify-content-center align-items-center h-100   ">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px; ; box-shadow: 4px 2px 5px  black;">
+                        <div class="card-body p-md-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                    <p class=" h1 fw-bold mb-5 mx-1 mx-md-1 mt-4 ">Add Strudent</p>
+
+                                    <form class="mx-1 mx-md-4">
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label style=" font-weight : bold">Name</label>
+                                                <br />
+
+                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control form-control-lg " } })
+                                                @Html.ValidationMessageFor(Model => Model.Name, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label style=" font-weight : bold">Father Name</label>
+                                                <br />
+
+                                                @Html.EditorFor(model => model.F_Name, new { htmlAttributes = new { @class = "form-control form-control-lg " } })
+                                                @Html.ValidationMessageFor(Model => Model.F_Name, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label style="font-weight : bold">Student Age</label>
+                                                <br />
+
+                                                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control form-control-lg " } })
+                                                @Html.ValidationMessageFor(Model => Model.Age, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label style=" font-weight : bold">Gender</label>
+                                                <br />
+                                                @Html.DropDownListFor(model => model.Gender, new SelectList(new[] { "Male", "Female" }, "Select Gender"), new { @class = "form-control form-control-lg " })
+
+                                                @Html.ValidationMessageFor(Model => Model.Gender, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label style="; font-weight : bold">Date of Birth</label>
+                                                <br />
+
+                                                @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control form-control-lg " } })
+                                                @Html.ValidationMessageFor(Model => Model.DOB, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label style=" font-weight : bold">Attendance</label>
+                                                <br />
+
+                                                @Html.EditorFor(model => model.Attendence, new { htmlAttributes = new { @class = "form-control form-control-lg " } })
+                                                @Html.ValidationMessageFor(Model => Model.Attendence, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label style=" font-weight : bold">Image</label>
+                                                <br />
+                                                <img src="@Url.Content(Session["Image"].ToString())" height="50px" width="60px" style="border-radius : 50%" />
+                                                <input type="file" name="Imagefile" required class="form-control" />
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <input type="submit" name="name" value="Update" class="form-control m-lg-3 form-control-lg btn " style="background: linear-gradient(90deg, rgba(5,30,71,1) 0%, rgba(6,33,75,1) 9%, rgba(28,106,164,1) 100%, rgba(6,175,233,1) 100%) ;color : white; font-weight: bold" />
+
+
+                                    </form>
+
+                                </div>
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                                         class="img-fluid" alt="Sample image">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
